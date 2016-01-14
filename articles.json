@@ -236,7 +236,111 @@
 				"可他没有说有尾巴的任何好处。一只老狐狸站出来说：“如果你没有失去你的尾巴，你是不会来劝大家都割去尾巴的。”"
 			]
 		}
-	}
+	},
+  "Unit_1_My_Family":{
+    "tag": ["textbook","grade_2","part_1"],
+    "level":1,
+    "en":{
+        "name":"Unit 1 My Family",
+        "content":[
+          "Who's he? He is my father.",
+          "Who's she? She is my mother."
+        ]
+    },
+    "zh":{
+        "name":"第一课 我的家",
+        "content":[
+          "他是谁？他是我的爸爸。",
+          "她是谁？她是我的妈妈。"
+        ]
+    }
+  },
+  "Unit_2_Boys_and_Girls":{
+    "tag": ["textbook","grade_2","part_1"],
+    "level":1,
+    "en":{
+        "name":"Unit 2 Boys and Girls",
+        "content":[
+          "What's his name? His name is Panpan.",
+          "What's her name? Her name is Candy."
+        ]
+    },
+    "zh":{
+      "name":"第二课 男孩和女孩",
+      "content":[
+        "他叫什么名字？他的名字叫Panpan",
+        "她叫什么名字？她的名字叫Candy。"
+      ]
+    }
+  },
+  "Unit_3_My_Friends":{
+    "tag": ["textbook","grade_2","part_1"],
+    "level":1,
+    "en":{
+        "name":"Unit 3 My Friends",
+        "content":[
+          "What does he look like? He is tall.",
+          "What does she look like? She is pretty."
+        ]
+    },
+    "zh":{
+      "name":"第三课 我的朋友",
+      "content":[
+        "他长什么样？他很高大",
+        "她长什么样？她很漂亮"
+      ]
+    }
+  },
+  "Unit_4_In_the_Community":{
+    "tag": ["textbook","grade_2","part_1"],
+    "level":1,
+    "en":{
+      "name":"Unit 3 In the Community",
+      "content":[
+        "Where are you going? I'm going to the zoo.",
+        "Where are you going? I'm going to the park"
+      ]
+    },
+    "zh":{
+      "name":"第四课 在社区",
+      "content":[
+        "你要去哪里？我要去动物园。",
+        "你要去哪里？我要去公园。"
+      ]
+    }
+  },
+  "Unit_5_In_the_Park":{
+    "tag": ["textbook","grade_2","part_1"],
+    "level":1,
+    "en":{
+      "name":"Unit 5 In the Park",
+      "content":[
+        "There is a boat on th lake, There are trees in the park, There are birds in the park."
+      ]
+    },
+    "zh":{
+      "name":"第五课 在公园",
+      "content":[
+        "湖面上有一只小船，公园里有很多树，公园里有很多鸟。"
+      ]
+    }
+  },
+  "Unit_6_Happy_Holidays":{
+    "tag": ["textbook","grade_2","part_1"],
+    "level":1,
+    "en":{
+      "name":"Unit 6 Happy Holidays",
+      "content":[
+        "Here is a present for you. Thank you."
+      ]
+    },
+    "zh":{
+      "name":"第六课 节日快乐",
+      "content":[
+        "这是给你的礼物。谢谢。"
+      ]
+    }
+  }
 
 }
 
