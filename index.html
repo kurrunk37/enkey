@@ -1,0 +1,209 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<title>打字学英语</title>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script type="text/javascript" >
+window.articles={};
+//tts_map
+var tts_map={};
+//是不是一个新单词的开始
+function check_begin(){
+	var waitDom=$('#art span.wait:first');
+	waitDom.addClass('next');
+	if(waitDom.length==0){
+		$('#time_sum').text($('#art span').length+"字 / " +Math.round((new Date()-window.time_begin)/1000)+'秒');
+		$('#buttons').slideDown();
+		var pos_top=$('#buttons').position().top- parseInt($(window).height()/2);
+		if(pos_top>0) $("html,body").animate({scrollTop:pos_top}, 1000);
+		return;
+	}
+	var prev=waitDom.prev('span');
+	if(prev.length>0 && prev.text()!=' '){
+		return;
+	}
+	window.word="";
+	var split_char_list=[',','.',' ','1','2','3','4','5','6','7','8','9','0','"',"!","?","%","&","-",";",":","=","+","[","]","(",")","_","|"];
+	$('#art span.wait').each(function(){
+		if($.inArray($(this).text(), split_char_list)!=-1){
+				return false
+		}
+		window.word+=$(this).text();
+	});
+	if(window.word=='')return;
+	if(!tts_map.hasOwnProperty(window.word)){
+		tts_map[window.word] = new Audio();
+		tts_map[window.word].src = "tts/"+window.word+".mp3";
+		tts_map[window.word].addEventListener('canplaythrough',function(){
+			tts_map[window.word].play();
+		});
+		tts_map[window.word].addEventListener('error',function(){
+			if(window.word!=window.word.toLowerCase()){
+				tts_map[window.word] = new Audio("tts/"+window.word.toLowerCase()+".mp3");
+				tts_map[window.word].play();
+			}
+
+		});
+	}else{
+		tts_map[window.word].play();
+	}
+	//滚动
+	var pos_top=Math.max(0,parseInt(waitDom.position().top-$(window).height()/2));
+	if($(document).scrollTop()!=pos_top){
+		$("html,body").animate({scrollTop:pos_top}, 1000);
+	}
+	//$(window).scrollTop(parseInt($(window).height()/2)-pos_top);
+}
+//打了一个字
+function inputK(acKey){
+	var waitDom=$('#art span.wait:first');
+	if(waitDom.length==0){
+		return;
+	}
+	if(acKey== waitDom.text()){
+		waitDom.removeClass('wait');
+		waitDom.removeClass('next');
+		check_begin();
+	}else{
+		waitDom.fadeOut(400).fadeIn(400);
+	}
+}
+function begin(){
+	$('#art>p>span').addClass('wait');
+	$('#buttons').hide();
+	check_begin();
+	window.time_begin=new Date();
+}
+function init(art){
+	var art_title=art.en.name;
+	$('#main>h1').text(art.en.name+' / '+art.zh.name);
+	$('#art').empty();
+	for(var i=0;i<art.en.content.length;i++){
+		var p="<p><span>"+art.en.content[i].split("").join('</span><span class="wait">')+"</span></p>";
+		$('#art').append(p);
+	}
+	$('header>ul').slideUp();
+	begin();
+}
+function IsPC() {
+	var userAgentInfo = navigator.userAgent;
+	var Agents = ["Android", "iPhone",
+		"SymbianOS", "Windows Phone",
+		"iPad", "iPod"];
+	var flag = true;
+	for (var v = 0; v < Agents.length; v++) {
+		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+			flag = false;
+			break;
+		}
+	}
+	return flag;
+}
+
+$(document).ready(function(){
+	if(!IsPC()){
+		$('#start>img').attr('src','images/fail.gif');
+		$('#start>img').attr('alt','仅支持电脑键盘操作');
+		$('#start').append('<p>仅支持电脑键盘操作</p>');
+		return;
+	}
+	$.ajax({
+		url: "http://7xq0v7.com1.z0.glb.clouddn.com/articles.json",
+		dataType: "json",
+		async: false,
+		success: function(result){
+			window.articles=result;
+			var ul_html="";
+			for(var k in window.articles){
+				var star="";
+				for(var i=0;i<window.articles[k].level;i++){
+					star+="*";
+				}
+				ul_html+='<li><a href="?'+k+'">'+window.articles[k].en.name+' / '+window.articles[k].zh.name+'</a> '+star+'</li>';
+			}
+			$('header>ul').html(ul_html);
+			//var art_id=window.location.hash.substring(1);
+			var art_id=window.location.search.substring(1);
+
+			if(window.articles.hasOwnProperty(art_id)){
+				
+				init(window.articles[art_id]);
+
+				$(document).keydown(function(event){
+					if(event.keyCode==8)return false;
+				});
+				$(document).keypress(function(event){
+					var acKey=String.fromCharCode(event.keyCode||event.which);
+					inputK(acKey);
+					return false;
+				});
+				$('#start').fadeOut();
+			}else if(art_id!=''){
+				$('#start>img').attr('src','images/fail.gif');
+				$('#start>img').attr('alt','错误的文章编号');
+				$('#start').append('<p>错误的文章编号</p>');
+			}else{
+				$('#start').fadeOut();
+			}
+		},
+		error: function(){
+			$('#start>img').attr('src','images/fail.gif');
+			$('#start>img').attr('alt','加载失败');
+			$('#start').append('<p>加载失败</p>');
+		}
+	});
+});
+</script>
+<style type="text/css">
+html,body{padding:0px;margin:0px;background-color:#FAF9DE;font-family:Consolas,Monaco,Georgia,Cambria,"Times New Roman",Times,serif; }
+header{background-color:#bcf;margin-bottom:2em;border-top:1px solid #bcf}
+#main>h1{text-align:center; font-size:1.8em;margin:2em 0px;padding:0px;text-shadow: 1px 1px 1px #888;}
+#art{max-width: 29em;margin:1em auto;font-size:1.6em; padding:0px 1em;}
+#art span{background-color:none;text-shadow: 1px 1px 1px #d6d4cc;/*letter-spacing: 0.04em;*/}
+#art span.wait{/*background-color:white*/border-bottom:1px solid #aaa}
+#art span.wait.next{background-color:#444;color:white;}
+
+#buttons{display:none; text-align:center}
+
+#open_list{text-align:center;color:white;line-height:10px;font-size:10px;cursor:default}
+
+footer{border-top:1px solid #ccc;margin-top:6em;color:#ccc;font-size:12px;line-height:150%;}
+
+div#start{position: fixed; top:0px;left:0px;z-index:10;background-color:white;text-align:center;}
+</style>
+</head>
+<body>
+<div id="start">
+<img src="images/start.gif" alt="loading..." />
+</div>
+<script type="text/javascript">
+console.log($(window).width());
+$('#start').css('width',$(window).width());
+$('#start').css('height',$(window).height());
+$('#start>img').css('margin-top',parseInt($(window).height()/2)-100);
+</script>
+<header>
+<ul>
+</ul>
+<div id="open_list" onclick="$('header>ul').slideDown();">...</div>
+</header>
+
+
+<div id="main">
+	<h1></h1>
+	<div id="art"></div>
+</div>
+<div id="buttons">
+	<div id="time_sum"></div>
+	<input onclick="begin();" type="image" src="images/restart.png" title="重新开始"></input>
+</div>
+<footer>
+即以练习打字，也可以熟悉英文单词阅读
+</footer>
+</body>
+<div style="display:none">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257162818'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257162818' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</html>
