@@ -1,0 +1,13 @@
+{
+	"name" : "enkey",
+	"description": "学习打字的同时也在学习英语",
+	"version": "0.0.1",
+    "license": "MIT",
+	"files": [
+		"generate.js"
+	],
+	"dependencies": {
+		"underscore": "1.8.3",
+		"jade": "1.11.0"
+	}
+}

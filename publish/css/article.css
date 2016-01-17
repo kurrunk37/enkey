@@ -1,0 +1,20 @@
+html,body{padding:0px;margin:0px;background-color:#FAF9DE;font-family:Consolas,Monaco,Georgia,Cambria,"Times New Roman",Times,serif; }
+article>h1{text-align:center; font-size:1.4em;margin:2em 0px;padding:0px;text-shadow: 1px 1px 1px #888;}
+#art{max-width: 27em;margin:1em auto;font-size:1.4em; padding:0px 1em;}
+#art span{background-color:none;text-shadow: 1px 1px 1px #d6d4cc;/*letter-spacing: 0.04em;*/}
+#art span.wait{/*background-color:white*/border-bottom:1px solid #aaa}
+#art span.wait.next{background-color:#444;color:white;}
+
+#art div.p{margin:1em 0px;}
+#art div.p>p{margin:0px;}
+
+#art>h2{font-size:1em}
+
+#buttons>table{margin:auto;border-collapse:separate;border-spacing:50px;}
+#buttons>table td#restart_bt{text-align:center;width:300px;}
+
+footer{border-top:1px solid #ccc;margin-top:6em;color:#ccc;font-size:12px;line-height:150%;}
+
+div#start{position: fixed; top:0px;left:0px;z-index:10;background-color:white;text-align:center;}
+
+#stat{display:none}

@@ -1,0 +1,4 @@
+html,body{padding:0px;margin:0px;background-color:#FAF9DE;font-family:Consolas,Monaco,Georgia,Cambria,"Times New Roman",Times,serif; }
+header h1{font-size:1em;text-align:center;}
+footer{border-top:1px solid #ccc;margin-top:6em;color:#ccc;font-size:12px;line-height:150%;}
+#stat{display:none}
