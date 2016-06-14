@@ -3,3 +3,4 @@ node_modules
 publish/*.html
 .DS_Store
 test.*
+.Ulysses-Group.plist
