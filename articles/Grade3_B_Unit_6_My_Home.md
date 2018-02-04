@@ -1,4 +1,4 @@
-name : G3BU5 My Home / 三年级下.6 我的家
+name : G3BU6 My Home / 三年级下.6 我的家
 level : 1
 path : textbook|grade_3|part_2
 
