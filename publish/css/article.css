@@ -18,3 +18,5 @@ footer{border-top:1px solid #ccc;margin-top:6em;color:#ccc;font-size:12px;line-h
 div#start{position: fixed; top:0px;left:0px;z-index:10;background-color:white;text-align:center;}
 
 #stat{display:none}
+
+#fanyi{background-color: #333; color: #faf9de; position:fixed ; bottom:0px; padding:0 0.5em; line-height:2em}

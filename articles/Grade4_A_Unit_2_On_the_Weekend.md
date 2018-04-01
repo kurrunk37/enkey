@@ -1,4 +1,4 @@
-name : G4AU1 On the Weekend / 四年级上.2 周末
+name : G4AU2 On the Weekend / 四年级上.2 周末
 level : 1
 path : textbook|grade_4|part_1
 
@@ -28,3 +28,21 @@ I often go rock climbing with my friends. It often feels scary, but it is very s
 Ioften go for a walk on the beach. I also like playing Frisbee there with my parents and swimming in the sea. / 我经常去海边散步。 我也喜欢和父母一起玩飞盘，在海里游泳。
 
 I often go to the National Railway Museum with my dad. I like looking at all the trains. I can even drive a train at the museum! / 我经常和爸爸一起去国家铁路博物馆。 我喜欢看所有的火车。 我甚至可以在博物馆开火车！
+
+# Story Time, A
+
+Bill likes playing computer games. / 比尔喜欢玩电脑游戏。
+
+When Bill's parents pick fruit, Bill plays computer games. / 当比尔的父母采摘水果时，比尔在玩电脑游戏。 
+
+When Bill's family visit his grandparents, Bill still plays computer games. / 当比尔的家人去拜访他的祖父母时，比尔仍然玩电脑游戏。
+
+When Bill and his father go fishing, he still plays computer games. / 比尔和他父亲去钓鱼的时候，他还玩电脑游戏。
+
+Oh no! Bill's computer! /  哦！不！比尔的电脑……
+
+He can't play computer games, so he tries fishing with his father. It is fun. / 他不能玩电脑游戏了，所以他试图和父亲一起钓鱼。 很好玩。
+
+He can't play computer games, so he talks with his grandparents. That is fun, too. / 他不能玩电脑游戏了，所以他跟他的祖父母说话。 这也很有趣。
+
+Now Bill often has fun with his parents on the weekend. He doesn't need his computer to have fun. / 现在比尔常常和父母在周末玩得很开心。 他没有电脑也能玩得开心。
