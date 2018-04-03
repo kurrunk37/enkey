@@ -20,7 +20,6 @@ Many American children like baseball. They can throw and hit the ball very fast.
 
 English child ren often play cricket. It is a very slow game. You sometimes need five days to play one game of cricket! / 英文小孩常常玩板球。 这是一个非常缓慢的游戏。 你有时需要五天才能玩一场板球！
 
-Korean Child ren like tae kwon do. They can kick very high. You need to be strong and fast to do tae kwon do. / 
-韩国孩子喜欢跆拳道。 他们可以踢得很高。 跆拳道需要你强壮且反应快速。
+Korean Child ren like tae kwon do. They can kick very high. You need to be strong and fast to do tae kwon do. / 韩国孩子喜欢跆拳道。 他们可以踢得很高。 跆拳道需要你强壮且反应快速。
 
 Russian children really like ice hockey. They can skate very fast. You need a cold place to play. / 俄罗斯的孩子们真的喜欢冰球。 他们可以快速滑冰。玩冰球需要一个冷的地方。
