@@ -72,6 +72,7 @@ function inputK(acKey){
 function begin(){
 	$('#art>div.p>p>span').addClass('wait');
 	$('td#restart_bt>div').hide();
+	$("#fanyi").show();
 	check_begin();
 	window.time_begin=new Date();
 }
