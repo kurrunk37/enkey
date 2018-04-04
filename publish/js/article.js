@@ -7,7 +7,7 @@ function check_begin(){
 	var waitDom=$('#art span.wait:first');
 	waitDom.addClass('next');
 	if(waitDom.length==0){
-		$('#time_sum').text(($('#art span').length/Math.round((new Date()-window.time_begin)/1000/60)).toFixed(2)+'字 / 分钟');
+		$('#time_sum').text(($('#art span').length/(new Date()-window.time_begin)*1000*60).toFixed(2)+'字 / 分钟');
 		$('#restart_bt>div').slideDown();
 		var pos_top=$('#buttons').position().top- parseInt($(window).height()/2);
 		if(pos_top>0) $("html,body").animate({scrollTop:pos_top}, 1000);
