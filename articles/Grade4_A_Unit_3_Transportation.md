@@ -27,7 +27,6 @@ Venice has many rivers. People don't travel by car or bike. They travel by gondo
 
 In the desert, some people travel by camel. Camels can walk a long time in the sun. / 在沙漠中，有些人乘骆驼旅行。 骆驼可以在阳光下漫长的行走。
 
-In Thailand, you can travel by elephant. An elephant can carry three or four people. / 
-在泰国，你可以乘大象旅行。 一头大象可以携带三四个人。
+In Thailand, you can travel by elephant. An elephant can carry three or four people. / 在泰国，你可以乘大象旅行。 一头大象可以携带三四个人。
 
 In very cold places, some people travel by sled. The sled is pulled by dogs. It is cold but fun! / 在非常寒冷的地方，有些人乘雪橇旅行。 雪橇被狗拉着。 这很冷，但很有趣！
