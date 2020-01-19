@@ -2,8 +2,8 @@ var jade = require("jade"),
 	fs = require("fs"),
 	_ = require('underscore');
 
-function gen_article(md_string, art_id){
-	var meta = {};
+function gen_article(md_string, art_id, isExists){
+	var meta = {size:0};
 	var isreadmeta=true;
 	var content_list=[];
 	md_string.split("\n").forEach(function(line){
@@ -37,6 +37,7 @@ function gen_article(md_string, art_id){
       var data_id=data_index[0]*1000+data_index[1];
 			html+='<p data-tran="'+data_id+'">';
       html+=line_fields[0].trim();
+      meta.size += line_fields[0].length;
       //<span>'+line_fields[0].trim().split('').join('</span><span>')+'</span>';
 			if(line_fields.length==2) tran_dict[data_id]=line_fields[1].trim();
 			html+='</p>';
@@ -45,17 +46,21 @@ function gen_article(md_string, art_id){
 		html+="</div>";
     data_index[0]++;
 	});
-	fs.writeFileSync("publish/"+art_id+'.html',
-      jade.renderFile('templates/article.jade',
-        _.extend(meta, {"content":html,"tran_dict":JSON.stringify(tran_dict)})),
-      "utf-8");
+  if(!isExists){
+    fs.writeFileSync("publish/"+art_id+'.html',
+              jade.renderFile('templates/article.jade',
+                _.extend(meta, {"content":html,"tran_dict":JSON.stringify(tran_dict)})),
+              "utf-8");
+  }
 	return meta;
 }
-function gen_index(art_map){
+function gen_index(art_list){
   var html="<ul>";
-  for(var art_id in art_map){
-    if(art_id=='test')continue;
-    html+='<li><a href="'+art_id+'.html">'+art_map[art_id].name+'</a></li>';
+  art_list.sort(function(a,b){return b.mtime - a.mtime});
+  for(var i in art_list){
+    var art = art_list[i];
+    if(art.id=='test')continue;
+    html+='<li>['+art.level+'] <a href="'+art.id+'.html">'+art.name+'</a> - '+ (art.size?art.size+'字':'') +'</li>';
   }
   html+='</ul>';
 	fs.writeFileSync('publish/index.html',
@@ -65,13 +70,19 @@ function gen_index(art_map){
 
 
 
-var art_list=fs.readdirSync("./articles/");
+var artfile_list=fs.readdirSync("./articles/");
 
-var art_map={};
-art_list.forEach(function(name){
+var art_list=[];
+artfile_list.forEach(function(name){
   var art_id=name.replace(/.md$/g,'');
   if(art_id==name)return;
-  console.log(art_id);
-	art_map[art_id]=gen_article(fs.readFileSync("./articles/"+name,"utf-8"), art_id);
+  var mdMtime = fs.statSync("./articles/"+name).mtimeMs;
+  var htmlFile = "./publish/"+art_id+".html";
+  var isExists = fs.existsSync(htmlFile) && fs.statSync(htmlFile).mtimeMs>mdMtime;
+  if(!isExists){
+    console.log(art_id);
+  }
+	art_list.push(Object.assign(gen_article(fs.readFileSync("./articles/"+name,"utf-8"), art_id, isExists),
+    {"mtime": mdMtime, "id": art_id}));
 });
-gen_index(art_map);
+gen_index(art_list);

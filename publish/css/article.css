@@ -1,6 +1,6 @@
 html,body{padding:0px;margin:0px;background-color:#FAF9DE;font-family:Consolas,Monaco,Georgia,Cambria,"Times New Roman",Times,serif; }
 article>h1{text-align:center; font-size:1.4em;margin:2em 0px;padding:0px;text-shadow: 1px 1px 1px #888;}
-#art{max-width: 27em;margin:1em auto;font-size:1.4em; padding:0px 1em;}
+#art{max-width: 32em;margin:1em auto;font-size:1.4em; padding:0px 1em; line-height:175%;}
 #art span{background-color:none;text-shadow: 1px 1px 1px #d6d4cc;/*letter-spacing: 0.04em;*/}
 #art span.wait{/*background-color:white*/border-bottom:1px solid #aaa}
 #art span.wait.next{background-color:#444;color:white;}

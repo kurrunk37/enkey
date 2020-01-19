@@ -32,6 +32,7 @@ function check_begin(){
 		window.word+=$(this).text();
 	});
 	if(window.word=='')return;
+  window.word = window.word.toLowerCase();
 	if(!tts_map.hasOwnProperty(window.word)){
 		tts_map[window.word] = new Audio();
 		tts_map[window.word].src = "tts/"+window.word+".mp3";

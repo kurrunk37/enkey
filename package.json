@@ -1,8 +1,8 @@
 {
-	"name" : "enkey",
+	"name": "enkey",
 	"description": "学习打字的同时也在学习英语",
 	"version": "0.0.1",
-    "license": "MIT",
+	"license": "MIT",
 	"files": [
 		"generate.js"
 	],

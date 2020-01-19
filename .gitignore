@@ -5,3 +5,4 @@ publish/*.html
 test.*
 .Ulysses-Group.plist
 deploy.md
+/*.sh
