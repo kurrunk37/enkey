@@ -1,20 +1,27 @@
 doctype html
 html(lang="zh")
-	head
-		meta(charset="utf-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
-		title 打字 学英语 练听力
-		meta(name="Keywords", content="学英语, 学打字,小学课文,英语听力训练")
-		meta(name="description", content=" 这是一个对小学生有用的学习工具，学打字的同时也学了英语，能有效地提高英语听能力。")
-		//-script(type="text/javascript", src="http://libs.baidu.com/jquery/2.0.0/jquery.js")
-		link(rel="stylesheet", type="text/css", href="css/main.css")
-	body
-		header
-			h1 打字 学英语	练听力
-		div#main!=list
-		footer 即以练习打字，也可以熟悉英文单词阅读
-		div#stat
-			script(type="text/javascript").
-				var _hmt = _hmt || [];
-				(function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?40ae124fe7395af9289f80691c4f96cd"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();
-				//-var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257162818'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257162818' type='text/javascript'%3E%3C/script%3E"));
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
+    title 打字 学英语 练听力
+    meta(name="Keywords", content="学英语, 学打字,小学课文,英语听力训练")
+    meta(name="description", content=" 这是一个对小学生有用的学习工具，学打字的同时也学了英语，能有效地提高英语听能力。")
+    //-script(type="text/javascript", src="http://libs.baidu.com/jquery/2.0.0/jquery.js")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+  body
+    header
+      h1 打字 学英语  练听力
+    div#main
+      ul
+        - each art in list
+          li
+            | [#{art.level}] 
+            a(href=encodeURIComponent(art.id)+".html")= art.name
+            - if (art.size)
+              |  - #{art.size}字
+    footer 即以练习打字，也可以熟悉英文单词阅读
+    div#stat
+      script(type="text/javascript").
+        var _hmt = _hmt || [];
+        (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?40ae124fe7395af9289f80691c4f96cd"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();
+        //-var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257162818'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257162818' type='text/javascript'%3E%3C/script%3E"));

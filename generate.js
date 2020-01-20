@@ -55,16 +55,18 @@ function gen_article(md_string, art_id, isExists){
 	return meta;
 }
 function gen_index(art_list){
-  var html="<ul>";
   art_list.sort(function(a,b){return b.mtime - a.mtime});
+/*
+  var html="<ul>";
   for(var i in art_list){
     var art = art_list[i];
     if(art.id=='test')continue;
-    html+='<li>['+art.level+'] <a href="'+art.id+'.html">'+art.name+'</a> - '+ (art.size?art.size+'字':'') +'</li>';
+    html+='<li>['+art.level+'] <a href="'+encodeURIComponent(art.id)+'.html">'+art.name+'</a> - '+ (art.size?art.size+'字':'') +'</li>';
   }
   html+='</ul>';
+  */
 	fs.writeFileSync('publish/index.html',
-      jade.renderFile('templates/index.jade', {"list":html}),
+      jade.renderFile('templates/index.jade', {"list":art_list}),
       "utf-8");
 }
 

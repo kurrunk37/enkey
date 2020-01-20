@@ -1,6 +1,8 @@
 window.articles={};
 //tts_map
 var tts_map={};
+var failAudio = new Audio("./sound/fail.mp3");
+failAudio.load();
 //是不是一个新单词的开始
 var current_p;
 function check_begin(){
@@ -39,6 +41,7 @@ function check_begin(){
 		tts_map[window.word].addEventListener('canplaythrough',function(){
 			tts_map[window.word].play();
 		});
+    /*
 		tts_map[window.word].addEventListener('error',function(){
 			if(window.word!=window.word.toLowerCase()){
 				tts_map[window.word] = new Audio("tts/"+window.word.toLowerCase()+".mp3");
@@ -46,6 +49,7 @@ function check_begin(){
 			}
 
 		});
+    */
 	}else{
 		tts_map[window.word].play();
 	}
@@ -68,7 +72,13 @@ function inputK(acKey){
 		check_begin();
 	}else{
 		waitDom.fadeOut(400).fadeIn(400);
+    failAudio.play();
 	}
+  let tword = waitDom.attr("word");
+  if(tword && tword.length>0){
+    var wordWeight = parseInt(localStorage.getItem('word:'+tword) || "0");
+    localStorage.setItem('word:'+tword, Math.min(tword.length*3, wordWeight + (acKey == waitDom.text()? 1:0- tword.length*2)));
+  }
 }
 function begin(){
 	$('#art>div.p>p>span').addClass('wait');
@@ -101,7 +111,24 @@ $(document).ready(function(){
   $('#art>div.p>p').each(function(){
     var con_string=$(this).text().trim();//.split('');
     if(con_string=='')return;
-    $(this).html('<span>'+con_string.split('').join('</span><span>')+'</span>');
+    var space_strings=con_string.split(" ");
+    var ciList = [];
+    for(let i in space_strings){
+      let ci = space_strings[i].match(/^([\w]*)([^\w]*)$/);
+      if(!ci){
+        ciList.push('<span>' + space_strings[i].split('').join('</span><span>') + '</span>');
+      }else{
+        if(ci[1]!=''){
+          var wordCss = parseInt(localStorage.getItem('word:'+ci[1]) || "0")>=0?"":'style="color:red"';
+          ciList.push('<span word="'+ci[1].toLowerCase()+'" '+wordCss+'>' + ci[1].split('').join('</span><span word="'+ci[1].toLowerCase()+'" '+wordCss+'>') + '</span>');
+        }
+        if(ci[2]!=''){
+          ciList.push('<span>' + ci[2].split('').join('</span><span>') + '</span>');
+        }
+      }
+    }
+    $(this).html(ciList.join('<span> </span>'));
+//    $(this).html('<span>'+con_string.split('').join('</span><span>')+'</span>');
   });
 
   $(document).keydown(function(event){
