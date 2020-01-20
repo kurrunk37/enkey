@@ -1,38 +1,38 @@
 doctype html
 html(lang="zh")
-	head
-		meta(charset="utf-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
-		title #{name} | 打字学英语
-		script(type="text/javascript", src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js")
-		//-script(type="text/javascript", src="http://libs.baidu.com/jquery/2.0.0/jquery.js")
-		script(type="text/javascript", src="js/article.js")
-		link(rel="stylesheet", type="text/css", href="css/article.css")
-		script(type="text/javascript").
-			var tran_dict=!{tran_dict} ;
-	body
-		div(id="start")
-			img(src="images/start.gif", alt="loading...")
-		script(type="text/javascript").
-			$('#start').css('width',$(window).width());
-			$('#start').css('height',$(window).height());
-			$('#start>img').css('margin-top',parseInt($(window).height()/2)-100);
-		article
-			h1 #{name}
-			div#art!=content
-			div#fanyi
-		div#buttons
-			table
-				tr
-					td
-						a(href="./") &lt;
-					td#restart_bt(style="text-algin:center") 
-						div
-							div#time_sum
-							input(onclick="begin()", type="image", src="images/restart.png", title="重新开始")
-					td(style="text-algin:right") 
-		footer 即以练习打字，也可以熟悉英文单词阅读
-		div#stat
-			script(type="text/javascript").
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
+    title #{name} | 打字学英语
+    script(type="text/javascript", src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js")
+    //-script(type="text/javascript", src="http://libs.baidu.com/jquery/2.0.0/jquery.js")
+    script(type="text/javascript", src="js/article.js")
+    link(rel="stylesheet", type="text/css", href="css/article.css")
+    script(type="text/javascript").
+      var tran_dict=!{tran_dict} ;
+  body
+    div(id="start")
+      img(src="images/start.gif", alt="loading...")
+    script(type="text/javascript").
+      $('#start').css('width',$(window).width());
+      $('#start').css('height',$(window).height());
+      $('#start>img').css('margin-top',parseInt($(window).height()/2)-100);
+    article
+      h1 #{name}
+      div#art!=content
+      div#fanyi
+    div#buttons
+      table
+        tr
+          td
+            a(href="./") &lt;
+          td#restart_bt(style="text-algin:center") 
+            div
+              div#time_sum
+              input(onclick="begin()", type="image", src="images/restart.png", title="重新开始")
+          td(style="text-algin:right") 
+    footer 即以练习打字，也可以熟悉英文单词阅读
+    div#stat
+      script(type="text/javascript").
         var _hmt = _hmt || [];
         (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a08c4bdcd6edc62c308fae1f3d35b4a3"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();
