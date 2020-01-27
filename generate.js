@@ -32,7 +32,7 @@ function gen_article(md_string, art_id, isExists){
 		var lines=p_content.split(/[\n\r]+/);
     var br_list=[];
 		lines.forEach(function(line){
-			var line_fields=line.split('/');
+			var line_fields=line.split(' / ');
 			if(line_fields[0].trim()=='')return;
       var data_id=data_index[0]*1000+data_index[1];
 			html+='<p data-tran="'+data_id+'">';
