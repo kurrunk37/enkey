@@ -111,19 +111,22 @@ $(document).ready(function(){
   $('#art>div.p>p').each(function(){
     var con_string=$(this).text().trim();//.split('');
     if(con_string=='')return;
-    var space_strings=con_string.split(" ");
+    var space_strings=con_string.split(/[\s]+/);
     var ciList = [];
     for(let i in space_strings){
       let ci = space_strings[i].match(/^([\w]*)([^\w]*)$/);
       if(!ci){
         ciList.push('<span>' + space_strings[i].split('').join('</span><span>') + '</span>');
       }else{
+        var ci2='';
+        if(ci[2]!=''){
+          ci2='<span>'+ci[2].split("").join("</span><span>")+'</span>';
+        }
         if(ci[1]!=''){
           var wordCss = parseInt(localStorage.getItem('word:'+ci[1]) || "0")>=0?"":'style="color:red"';
-          ciList.push('<span word="'+ci[1].toLowerCase()+'" '+wordCss+'>' + ci[1].split('').join('</span><span word="'+ci[1].toLowerCase()+'" '+wordCss+'>') + '</span>');
-        }
-        if(ci[2]!=''){
-          ciList.push('<span>' + ci[2].split('').join('</span><span>') + '</span>');
+          ciList.push('<span word="'+ci[1].toLowerCase()+'" '+wordCss+'>' + ci[1].split('').join('</span><span word="'+ci[1].toLowerCase()+'" '+wordCss+'>') + '</span>'+(ci2==''?'':ci2));
+        }else if(ci2!=''){
+          ciList.push(ci2);
         }
       }
     }
