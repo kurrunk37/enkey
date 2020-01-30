@@ -1,20 +1,36 @@
 window.articles={};
+window.aId = window.location.pathname.split("/").pop();
 //tts_map
 var tts_map={};
 var failAudio = new Audio("./sound/fail.mp3");
 failAudio.load();
+// 完成
+function daWan(){
+  var useTime = new Date().getTime()-window.time_begin;
+  var score = $('#art span').length/useTime*1000*60;
+	$('#time_sum').text(score.toFixed(2)+'字 / 分钟');
+	$('#restart_bt>div').slideDown();
+	var pos_top=$('#buttons').position().top- parseInt($(window).height()/2);
+	if(pos_top>0) $("html,body").animate({scrollTop:pos_top}, 1000);
+	$("#fanyi").hide();
+  //
+  var scores = JSON.parse(window.localStorage.getItem(aId+":score") || "[]")
+  scores.unshift([new Date().getTime(), useTime, $('#art span').length]);
+  window.localStorage.setItem(aId+":score", JSON.stringify(scores.slice(0, 32)));
+  $("table#scores").html(scores.map(function(v){
+    return "<tr><td>"+new Date(v[0])+"</td><td>"+(v[2]*1000*60/v[1]).toFixed(2)+"字/分钟</td></tr>";
+    }).join(""));
+	$("#scores").show();
+}
+
 //是不是一个新单词的开始
 var current_p;
 function check_begin(){
 	var waitDom=$('#art span.wait:first');
 	waitDom.addClass('next');
 	if(waitDom.length==0){
-		$('#time_sum').text(($('#art span').length/(new Date()-window.time_begin)*1000*60).toFixed(2)+'字 / 分钟');
-		$('#restart_bt>div').slideDown();
-		var pos_top=$('#buttons').position().top- parseInt($(window).height()/2);
-		if(pos_top>0) $("html,body").animate({scrollTop:pos_top}, 1000);
-		$("#fanyi").hide();
-		return;
+    // 完成
+		return daWan();
 	}
 	var pid=waitDom.parent().attr("data-tran");
 	if(pid!=current_p){
@@ -84,8 +100,9 @@ function begin(){
 	$('#art>div.p>p>span').addClass('wait');
 	$('td#restart_bt>div').hide();
 	$("#fanyi").show();
+	$("#scores").hide();
 	check_begin();
-	window.time_begin=new Date();
+	window.time_begin=new Date().getTime();
 }
 function IsPC() {
 	var userAgentInfo = navigator.userAgent;
