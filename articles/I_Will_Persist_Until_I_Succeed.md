@@ -1,0 +1,7 @@
+name : I Will Persist Until I Succeed / 坚持不懈 直到成功
+level : 2
+path : essay|encourage
+
+I will persist until I succeed. The prizes of life are at the end of the journey, not in the beginning, and I have no idea how many steps are necessary in order to reach my goal. Failure I may still encounter at the thousandth step, yet success hides behind the next turning of the road. Never will I know how close it lies unless I turn the corner. Always will I take another step. If that is of no use, I will take another, and yet another. / 坚持不懈，直到成功。生命的嘉奖在旅途的终点，而非起点，我不知道我还要走多久才能到达目的地。当我走到第一千步的时候，仍然可能遭遇失败，但成功或许就藏在下个拐角处。如果没走过这个路口，我永远不会知道它离我有多远。我会再向前走一步，如果没有用，我就再向前走一步。
+
+I will persist until I succeed. Henceforth, I will learn and apply the secrets of others to my work. When each day is ended, not regarding whether is has been a success or a failure, I will attempt to achieve one more goal. When my thought beckons my tired body homeward, I will resist the temptation to depart. I will make one more attempt to close with victory, and if that fails I will make another. Never will I allow any day to end with a failure. Thus will I plant the seed of tomorrow's success and gain an insuperable advantage over those who cease labor at a prescribed time. When others cease their struggle, mine will begin, and then my harvest will be full. / 坚持不懈，直到成功。从今以后，我要学习他人成功的秘诀并运用到我的工作中去。当每一天结束的时候，无论成败与否，我都将尝试实现新的目标。当我的大脑召唤我疲惫的身体回家休息时，我要抵住离开的诱惑。为了接近成功，我会再试一次，如果失败，我还会再试一次。我绝不允许任何一天以失败告终。我要为明天播下成功的种子，超过那些按部就班的人。当别人停止奋斗时，我将继续拼搏，总有一天我会获得丰收。
