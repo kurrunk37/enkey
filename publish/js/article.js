@@ -1,24 +1,26 @@
 window.articles={};
 window.aId = window.location.pathname.split("/").pop();
+window.timeFlag = new Date().getTime();
+window.useTime = 0;
+window.errorCount = 0;
 //tts_map
 var tts_map={};
 var failAudio = new Audio("./sound/fail.mp3");
 failAudio.load();
 // 完成
 function daWan(){
-  var useTime = new Date().getTime()-window.time_begin;
-  var score = $('#art span').length/useTime*1000*60;
-	$('#time_sum').text(score.toFixed(2)+'字 / 分钟');
+  var score = $('#art span').length/window.useTime*1000*60;
+	$('#time_sum').text(score.toFixed(2)+'字/分钟，'+window.errorCount+'个失误');
 	$('#restart_bt>div').slideDown();
 	var pos_top=$('#buttons').position().top- parseInt($(window).height()/2);
 	if(pos_top>0) $("html,body").animate({scrollTop:pos_top}, 1000);
 	$("#fanyi").hide();
   //
   var scores = JSON.parse(window.localStorage.getItem(aId+":score") || "[]")
-  scores.unshift([new Date().getTime(), useTime, $('#art span').length]);
+  scores.unshift([new Date().getTime(), window.useTime, $('#art span').length, window.errorCount]);
   window.localStorage.setItem(aId+":score", JSON.stringify(scores.slice(0, 32)));
   $("table#scores").html(scores.map(function(v){
-    return "<tr><td>"+new Date(v[0])+"</td><td>"+(v[2]*1000*60/v[1]).toFixed(2)+"字/分钟</td></tr>";
+    return "<tr><td>"+new Date(v[0])+"</td><td>"+(v[2]*1000*60/v[1]).toFixed(2)+"字/分钟</td><td>错了"+v[3]+"次</td></tr>";
     }).join(""));
 	$("#scores").show();
 }
@@ -87,22 +89,29 @@ function inputK(acKey){
 		waitDom.removeClass('next');
 		check_begin();
 	}else{
-		waitDom.fadeOut(400).fadeIn(400);
+		waitDom.fadeOut(200).fadeIn(200);
     failAudio.play();
+    window.errorCount += 1;
 	}
   let tword = waitDom.attr("word");
   if(tword && tword.length>0){
     var wordWeight = parseInt(localStorage.getItem('word:'+tword) || "0");
     localStorage.setItem('word:'+tword, Math.min(tword.length*3, wordWeight + (acKey == waitDom.text()? 1:0- tword.length*2)));
   }
+  let currentTime = new Date().getTime();
+  window.useTime += Math.min(currentTime-window.timeFlag, 10000);
+  window.timeFlag = currentTime;
 }
 function begin(){
 	$('#art>div.p>p>span').addClass('wait');
 	$('td#restart_bt>div').hide();
 	$("#fanyi").show();
 	$("#scores").hide();
+  window.useTime = 0;
+  window.timeFlag = new Date().getTime();
+  window.errorCount = 0;
 	check_begin();
-	window.time_begin=new Date().getTime();
+	//window.time_begin=new Date().getTime();
 }
 function IsPC() {
 	var userAgentInfo = navigator.userAgent;
