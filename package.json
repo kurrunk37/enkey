@@ -7,7 +7,7 @@
 		"generate.js"
 	],
 	"dependencies": {
-		"underscore": "1.8.3",
+		"underscore": "1.12.1",
 		"jade": "1.11.0"
 	}
 }
